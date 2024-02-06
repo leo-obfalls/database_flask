@@ -1,31 +1,19 @@
 #!/usr/bin/env python3
-from flask import Flask, render_template
-import psycopg2
-from config import db_config
-
+from flask import Flask, render_template, request
+from flask_sqlalchemy import SQLAlchemy
+from config import Config
 
 app = Flask(__name__)
+app.config.from_object(Config)
+db = SQLAlchemy(app)
 
-dbname = db_config['dbname']
-user = db_config['user']
-password = db_config['password']
-host = db_config['host']
-port = db_config['port']
+@app.route('/')
+def display_tables():
+    keyword = request.args.get('keyword', '')
+    inspector = db.inspect(db.engine)
+    tables = inspector.get_table_names()
+    filtered_tables = [table for table in tables if keyword.lower() in table.lower()]
+    return render_template('home.html', tables=filtered_tables, keyword=keyword)
 
-def get_db_connection():
-        conn = psycopg2.connect(**db_config)
-        return conn
-
-@app.route("/")
-def hello():
-    return render_template('home.html')
-
-
-
-@app.route('/index')
-def index():
-    conn = get_db_connection()
-    return render_template('index.html', data=data)
-
-if __name__ == "__main__":
-    app.run()
+if __name__ == '__main__':
+    app.run(debug=True)

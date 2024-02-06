@@ -19,15 +19,21 @@
         </h2>
         <img class="img-fluid" src="static/css/images/banner_modern.png">
         <p class="text-center">This is a test interface to connect with a postgresql database.</p>
-        <div class="search-container">
-          <form action="/search" method="GET">
-            <input type="text" placeholder="Search..." name="q" required>
-            <input type="submit" value="Search">
-          </form>
-        </div>
-        <br>
+         <form action="/" method="get">
+        <label for="keyword">Search:</label>
+        <input type="text" id="keyword" name="keyword" value="{{ keyword }}">
+        <button type="submit">Search</button>
+    </form>
+    <br>
+<ul class="list-group">
+    {% for table in tables %}
+        <li class="list-group-item">{{ table }}</li>
+    {% endfor %}
+</ul>
+             <br>
         <div class="text-center">
           <a href="mailto:una.faller@sorbonne-universite.fr" button class="btn btn-info"  text-align: center;>Contact Us</a>
         </div>
     </body>
   </html>
+
