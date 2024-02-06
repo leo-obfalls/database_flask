@@ -1,0 +1,50 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #34cceb;
+}
+
+
+h1 {
+  font-family: Arial, sans-serif;
+  font-size: 28px;
+  font-style: italics;
+  color: #f2b63f;
+}
+h2 {
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+  font-style: italics;
+  color: #f2b63f;
+}
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.search-container {
+  text-align: center;
+}
+.search-container input[type="text"] {
+  width: 70%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+.search-container input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.search-container input[type="submit"]:hover {
+
